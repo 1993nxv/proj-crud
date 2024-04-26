@@ -1,21 +1,44 @@
 {
-    "produtos": [
-        {
-            "id": 1,
-            "nome": "Iphone 15",
-            "preco": 8965.90
-        }, {
-            "id": 2,
-            "nome": "Carregador sem fio",
-            "preco": 350.00
-        }, {
-            "id": 3,
-            "nome": "Capa protera iphone",
-            "preco": 39.99
-        }, {
-            "id": 4,
-            "nome": "MacBook Pro 22",
-            "preco": 13339.99
-        }
-    ]
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Iphone 15",
+      "preco": 8965.9
+    },
+    {
+      "id": "2",
+      "nome": "Carregador sem fio",
+      "preco": 350
+    },
+    {
+      "id": "3",
+      "nome": "Capa protera iphone",
+      "preco": 39.99
+    },
+    {
+      "id": "4",
+      "nome": "MacBook Pro 22",
+      "preco": 13339.99
+    },
+    {
+      "id": "fbe7",
+      "nome": "Produto de Teste",
+      "preco": 125.38
+    },
+    {
+      "id": "4020",
+      "nome": "Produto de Teste",
+      "preco": 125.38
+    },
+    {
+      "id": "f19b",
+      "nome": "Produto de Teste",
+      "preco": 125.38
+    },
+    {
+      "id": "0572",
+      "nome": "Produto de Teste",
+      "preco": 125.38
+    }
+  ]
 }
