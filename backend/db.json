@@ -21,24 +21,9 @@
       "preco": 13339.99
     },
     {
-      "id": "fbe7",
-      "nome": "Produto de Teste",
-      "preco": 125.38
-    },
-    {
-      "id": "4020",
-      "nome": "Produto de Teste",
-      "preco": 125.38
-    },
-    {
-      "id": "f19b",
-      "nome": "Produto de Teste",
-      "preco": 125.38
-    },
-    {
-      "id": "0572",
-      "nome": "Produto de Teste",
-      "preco": 125.38
+      "id": "af3f",
+      "nome": "Produto vindo do formulário ",
+      "preco": "1234.99"
     }
   ]
 }

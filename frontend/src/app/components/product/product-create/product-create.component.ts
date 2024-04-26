@@ -12,8 +12,8 @@ import { Product } from '../product.model';
 export class ProductCreateComponent implements OnInit{
 
   product: Product = {
-    nome: 'Produto de Teste',
-    preco: 125.38
+    nome: '',
+    preco: null!
   }
 
   constructor(
@@ -29,7 +29,6 @@ export class ProductCreateComponent implements OnInit{
             this.produtoService.showMessaage('Produto criado com sucesso!', 'msg-success');
             this.route.navigate(['/produtos']);
           });
-    
   }
 
   cancel(): void {
