@@ -2,7 +2,7 @@
   "produtos": [
     {
       "id": "1",
-      "nome": "Iphone 15",
+      "nome": "Iphone 15 PRO MAX",
       "preco": 8965.9
     },
     {
@@ -21,9 +21,9 @@
       "preco": 13339.99
     },
     {
-      "id": "af3f",
-      "nome": "Produto vindo do formulário ",
-      "preco": "1234.99"
+      "id": "5",
+      "nome": "Bone Black AVANC.",
+      "preco": "123.99"
     }
   ]
 }
