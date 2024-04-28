@@ -10,7 +10,7 @@ import { Product } from '../product.model';
 export class ProductReadComponent {
 
   products!: Product[];
-  displayedColumns = ['id', 'nome', 'preco'];
+  displayedColumns = ['id', 'nome', 'preco', 'action'];
 
   constructor(private productService: ProductService) {}
 
