@@ -1,8 +1,10 @@
 import { Product } from './product.model';
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,11 @@ export class ProductService {
 
   baseUrl = "http://localhost:3001/produtos";
 
-  constructor(private snackbBar: MatSnackBar, private httpClient: HttpClient) { }
+  constructor(
+    private snackbBar: MatSnackBar, 
+    private httpClient: HttpClient,
+    public dialog: MatDialog
+  ) { }
 
   showMessaage(msg: string): void {
     this.snackbBar.open(msg, 'Ok', {
@@ -19,6 +25,23 @@ export class ProductService {
       horizontalPosition: "right",
       verticalPosition: "top"
   });
+  }
+
+  openDialog(id: string, mensage: string): Observable<boolean> {
+    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
+      data: mensage,
+    });
+
+    return new Observable<boolean>(observer => {
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result) {
+          observer.next(true);
+        } else {
+          observer.next(false); 
+        }
+        observer.complete();
+      });
+    });
   }
 
   read(): Observable<Product[]> {

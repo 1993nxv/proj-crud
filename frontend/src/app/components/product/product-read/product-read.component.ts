@@ -2,8 +2,7 @@ import { Router } from '@angular/router';
 import { ProductService } from './../product.service';
 import { Component } from '@angular/core';
 import { Product } from '../product.model';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogConfirmationComponent } from '../../dialog-confirmation/dialog-confirmation.component';
+import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 
 @Component({
   selector: 'app-product-read',
@@ -17,7 +16,6 @@ export class ProductReadComponent {
 
   constructor(
     private productService: ProductService,
-    public dialog: MatDialog,
     private route: Router
   ) {}
 
@@ -25,19 +23,16 @@ export class ProductReadComponent {
     this.updteTableProducts();
   }
 
-  openDialog(id: string): void {
-    const dialogRef = this.dialog.open(DialogConfirmationComponent, {
-      data: 'Tem certeza que deseja remover o produto?',
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.productService.delete(id).subscribe(
-          product => {
-            this.productService.showMessaage('Produto excluido com sucesso!');
-            this.updteTableProducts();
-          });
-      }
-    });
+  openDialogDeleteProduct(id: string): void {
+    this.productService.openDialog(id, 'Tem certeza que deseja remover o produto?')
+            .subscribe(result => {
+              if(result){
+                this.productService.delete(id).subscribe(product => {
+                  this.productService.showMessaage('Produto excluido com sucesso!');
+                  this.updteTableProducts();
+                });
+              }
+            });
   }
 
   updteTableProducts(): void {
