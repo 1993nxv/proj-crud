@@ -33,7 +33,7 @@ export class ProductService {
     });
 
     return new Observable<boolean>(observer => {
-      dialogRef.afterClosed().subscribe((result: any) => {
+      dialogRef.afterClosed().subscribe(result => {
         if (result) {
           observer.next(true);
         } else {
