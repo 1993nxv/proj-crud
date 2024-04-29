@@ -31,7 +31,6 @@ export class ProductReadComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        console.log('clicou sim')
         this.productService.delete(id).subscribe(
           product => {
             this.productService.showMessaage('Produto excluido com sucesso!');
