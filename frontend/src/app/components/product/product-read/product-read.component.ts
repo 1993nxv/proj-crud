@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProductService } from './../product.service';
 import { Component } from '@angular/core';
 import { Product } from '../product.model';
@@ -16,30 +17,34 @@ export class ProductReadComponent {
 
   constructor(
     private productService: ProductService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
-    this.productService.read().subscribe( 
-      products => {
-      this.products = products;
-      });
+    this.updteTableProducts();
   }
 
   openDialog(id: string): void {
     const dialogRef = this.dialog.open(DialogConfirmationComponent, {
       data: 'Tem certeza que deseja remover o produto?',
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      
       if(result){
         console.log('clicou sim')
         this.productService.delete(id).subscribe(
           product => {
-            this.productService.showMessaage('Produto excluido com sucesso!')
+            this.productService.showMessaage('Produto excluido com sucesso!');
+            this.updteTableProducts();
           });
       }
+    });
+  }
+
+  updteTableProducts(): void {
+    this.productService.read().subscribe( 
+      products => {
+      this.products = products;
     });
   }
 }
