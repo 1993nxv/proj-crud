@@ -1,11 +1,6 @@
 {
   "produtos": [
     {
-      "id": "2",
-      "nome": "Carregador sem fio",
-      "preco": 350
-    },
-    {
       "id": "3",
       "nome": "Capa protera iphone",
       "preco": 39.99
