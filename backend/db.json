@@ -1,11 +1,6 @@
 {
   "produtos": [
     {
-      "id": "1",
-      "nome": "Iphone 15 PRO MAX",
-      "preco": 8965.9
-    },
-    {
       "id": "2",
       "nome": "Carregador sem fio",
       "preco": 350

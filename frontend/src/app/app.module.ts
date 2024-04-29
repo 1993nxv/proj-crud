@@ -11,6 +11,7 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component'
 import { ProductCrudComponent } from './views/product-crud/product-crud.component';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
+import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav'
@@ -23,10 +24,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ProductReadComponent } from './components/product/product-read/product-read.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { ProductUpdateComponent } from './components/product/product-update/product-update.component';
+import { DialogConfirmationComponent } from './components/dialog-confirmation/dialog-confirmation.component';
+
+
 
 registerLocaleData(localePt);
 
@@ -41,7 +45,8 @@ registerLocaleData(localePt);
     ProductCrudComponent,
     ProductCreateComponent,
     ProductReadComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    DialogConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ registerLocaleData(localePt);
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [{
     provide: LOCALE_ID,
