@@ -28,7 +28,7 @@ export class ProductReadComponent {
             .subscribe(result => {
               if(result){
                 this.productService.delete(id).subscribe(product => {
-                  this.productService.showMessaage('Produto excluido com sucesso!');
+                  this.productService.msgService.openAlert('Produto excluido com sucesso!', 'alert-warning');
                   this.updteTableProducts();
                 });
               }

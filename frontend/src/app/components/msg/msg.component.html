@@ -1,0 +1,7 @@
+
+<div *ngIf="showAlert" [class]="'alert ' + estilo + ' alert-dismissible fade show'" [@slideInFromTop]>
+    <strong>Mensagem: </strong> {{msg}}
+    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>

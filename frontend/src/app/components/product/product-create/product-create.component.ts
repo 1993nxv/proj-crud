@@ -4,6 +4,7 @@ import {  Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
 
+
 @Component({
   selector: 'app-product-create',
   templateUrl: './product-create.component.html',
@@ -26,8 +27,8 @@ export class ProductCreateComponent implements OnInit{
   createProduct(): void {
     this.produtoService.create(this.product)
           .subscribe(() => {
-            this.produtoService.showMessaage('Produto criado com sucesso!');
             this.route.navigate(['/produtos']);
+            this.produtoService.msgService.openAlert('Produto criado com sucesso!', 'alert-success');
           });
   }
 
