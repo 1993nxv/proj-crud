@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { MsgService } from './msg.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -23,9 +23,8 @@ export class MsgComponent implements OnInit {
 
   showAlert: boolean = false;
   msg: string = '';
-  estilo: string = '';
 
-  constructor(private msgService: MsgService) { }
+  constructor(private msgService: MsgService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.msgService.msgEvent.subscribe((msg: string, estilo: string) => {
@@ -35,12 +34,19 @@ export class MsgComponent implements OnInit {
 
   openAlert(msg: string, estilo: string) {
     this.msg = msg;
-    this.estilo = estilo;
+    this.updateClass("msg", estilo);
     this.showAlert = true;
   }
 
   closeAlert() {
     this.showAlert = false;
+  }
+
+  updateClass(elementId: string, estilo: string) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      this.renderer.addClass(element, estilo);
+    }
   }
 
 }
