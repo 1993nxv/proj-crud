@@ -1,0 +1,10 @@
+.close {
+    margin-left: 20px;
+    background-color: transparent;
+    border: none;
+    transition: color 0.2s ease;
+}
+
+.close:hover {
+    color: #666666;
+}

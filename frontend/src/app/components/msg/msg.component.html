@@ -1,6 +1,6 @@
-<div *ngIf="showAlert" class="alert alert-dismissible" [ngClass]="estilo" [@slideInFromTop]>
+<div *ngIf="showAlert" class="alert" [ngClass]="estilo" [@slideInFromTop]>
     <strong>Mensagem: </strong> {{ msg }}
-    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
-      <span aria-hidden="true">&times;</span>
+    <button class="close" (click)="closeAlert()">
+      <span>&times;</span>
     </button>
 </div>
