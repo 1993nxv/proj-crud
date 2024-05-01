@@ -1,11 +1,10 @@
 import { Product } from './product.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { EMPTY, Observable, catchError, map } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
-import { MsgComponent } from '../msg/msg.component';
 import { MsgService } from '../msg/msg.service';
 
 @Injectable({
@@ -21,14 +20,6 @@ export class ProductService {
     public dialog: MatDialog,
     public msgService: MsgService
   ) { }
-
-  showMessaage(msg: string): void {
-    this.snackbBar.open(msg, 'Ok', {
-      duration: 300000,
-      horizontalPosition: "right",
-      verticalPosition: "top"
-  });
-  }
 
   openDialog(id: string, mensage: string): Observable<boolean> {
     const dialogRef = this.dialog.open(DialogConfirmationComponent, {
@@ -53,20 +44,38 @@ export class ProductService {
 
   readById(id: string): Observable<Product> {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.get<Product>(url);
+    return this.httpClient.get<Product>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   create(product: Product): Observable<Product> {
-    return this.httpClient.post<Product>(this.baseUrl, product);
+    return this.httpClient.post<Product>(this.baseUrl, product).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
   
   update(product: Product): Observable<Product> {
     const url = `${this.baseUrl}/${product.id}`;
-    return this.httpClient.put<Product>(url, product);
+    return this.httpClient.put<Product>(url, product).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
 
   delete(id: string): Observable<Product> {
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.delete<Product>(url);
+    return this.httpClient.delete<Product>(url).pipe(
+      map(obj => obj),
+      catchError(e => this.errorHandler(e))
+    );
   }
+
+  errorHandler(e: HttpErrorResponse): Observable<any> {
+    this.msgService.openAlert(e.message, 'alert-danger');
+    return EMPTY;
+  }
+
 }

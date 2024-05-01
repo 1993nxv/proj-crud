@@ -18,7 +18,12 @@
     {
       "id": "071b",
       "nome": "Caneta Bic Preta (alt)",
-      "preco": "5.00"
+      "preco": "5.008888"
+    },
+    {
+      "id": "8acc",
+      "nome": "",
+      "preco": null
     }
   ]
 }
