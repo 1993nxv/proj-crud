@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MsgComponent } from '../msg/msg.component';
+import { MsgService } from '../msg/msg.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +18,13 @@ export class ProductService {
   constructor(
     private snackbBar: MatSnackBar, 
     private httpClient: HttpClient,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public msgService: MsgService
   ) { }
 
   showMessaage(msg: string): void {
     this.snackbBar.open(msg, 'Ok', {
-      duration: 3000,
+      duration: 300000,
       horizontalPosition: "right",
       verticalPosition: "top"
   });
