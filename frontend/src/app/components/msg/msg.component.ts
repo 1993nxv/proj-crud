@@ -23,30 +23,29 @@ export class MsgComponent implements OnInit {
 
   showAlert: boolean = false;
   msg: string = '';
+  estilo: string = '';
 
   constructor(private msgService: MsgService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.msgService.msgEvent.subscribe((msg: string, estilo: string) => {
-      this.openAlert(msg, estilo);
+    this.msgService.msgEvent.subscribe((msg: string[]) => {
+      this.msg = msg[0];
+      this.estilo = msg[1];
+      this.openAlert();
     });
   }
 
-  openAlert(msg: string, estilo: string) {
-    this.msg = msg;
-    this.updateClass("msg", estilo);
+  openAlert() {
     this.showAlert = true;
+    
+    setTimeout(() => {
+      this.closeAlert();
+    }, 3000);
+
   }
 
   closeAlert() {
     this.showAlert = false;
-  }
-
-  updateClass(elementId: string, estilo: string) {
-    const element = document.getElementById(elementId);
-    if (element) {
-      this.renderer.addClass(element, estilo);
-    }
   }
 
 }
